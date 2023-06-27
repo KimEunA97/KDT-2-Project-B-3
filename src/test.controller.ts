@@ -4,7 +4,7 @@ import { TestService } from './test.service';
 export class TestController {
   constructor(private readonly TestService:TestService){}
   
-  @Get('*')
+  @Get()
   kimochi(@Res() res) {
     res.send(this.TestService.getHello())
   }
