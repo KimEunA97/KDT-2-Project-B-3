@@ -1,27 +1,8 @@
 
-.checkLabel {
-  position: relative;
-  display: block;
-  width: 60px;
-  height: 40px;
-  cursor: pointer;
-  /* z-index 추가 */
-  z-index: 2;
-}
-
-.sideMenu {
-  position: fixed;
-  width: 300px;
-  height: 100%;
-  background-color: tomato;
-  left: -300px;
-  transition: all 300ms;
-  z-index: 1;
-  top: 0px;
-  padding: 60px 20px 20px 20px;
-  box-sizing: border-box;
-}
-
-.check_box:checked + label + #side_menu {
-  left: 0;
+.hamburgerButton{
+  width: 50px;
+  height: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
 }
