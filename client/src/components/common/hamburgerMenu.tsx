@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import styled from '@emotion/styled'
+import styled from '@emotion/styled';
+import MenuList from './menuList'; // MenuList 컴포넌트의 경로에 맞게 수정해주세요.
 
-
+/*
 const Container = styled.div`
   position: relative;
 `;
@@ -14,54 +15,33 @@ const CheckLabel = styled.div`
   cursor: pointer;
   z-index: 2;
 `;
-
-const SideButton : React.FC = () => {
-  const [checked, setChecked] = useState(false);
-
-  const handleCheckboxChange = () => {
-    setChecked(!checked);
-  };
-
-
-/*
-const SideButton = () => {
-  const [checked, setChecked] = useState(false);
-
-  const handleCheckboxChange = () => {
-    setChecked(!checked);
-  };
 */
 
+const SideButton: React.FC = () => {
+  const [checked, setChecked] = useState(false);
+
+  const handleCheckboxChange = () => {
+    setChecked(!checked);
+  };
+
+  const initButton = () => {
+    setChecked(true);
+  };
 
   return (
-    <Container>
-      <input
-        type="checkbox"
-        id="check_box"
-        checked={checked}
-        onChange={handleCheckboxChange}
-      />
-        <CheckLabel>
+    <div>
+      <button onClick={initButton}>button</button>
+      <label htmlFor="check_box">
         <span></span>
         <span></span>
         <span></span>
-        </CheckLabel>
+      </label>
       {checked && (
         <div id="side_menu">
-          <ul>
-            <li>
-              <a href="#">menu1</a>
-            </li>
-            <li>
-              <a href="#">menu2</a>
-            </li>
-            <li>
-              <a href="#">menu3</a>
-            </li>
-          </ul>
+          <MenuList /> {/* MenuList 컴포넌트를 렌더링합니다. */}
         </div>
       )}
-    </Container>
+    </div>
   );
 };
 
