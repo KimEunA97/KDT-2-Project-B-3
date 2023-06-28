@@ -1,9 +1,11 @@
+
 import React, { useState } from 'react';
 import { Route, Routes, useLocation } from "react-router-dom";
 import Header from './components/layout/header';
 import TestPage from './components/pages/testPage';
 import TestPage2 from './components/pages/testPage2';
 import "./test.css";
+
 const App = ():JSX.Element => {
     const location = useLocation();
     const [pageTitle, setPageTitle] = useState("");
