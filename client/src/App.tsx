@@ -5,6 +5,7 @@ import Header from './components/layout/header';
 import TestPage from './components/pages/testPage';
 import TestPage2 from './components/pages/testPage2';
 import "./test.css";
+import SideMenu from './components/common/hamburgerMenu';
 
 const App = ():JSX.Element => {
     const location = useLocation();
@@ -29,6 +30,9 @@ const App = ():JSX.Element => {
     return (
         <div>
         <Header title={pageTitle} />
+        <div className='hamburgerMenu'>
+        <SideMenu />
+        </div>
             <Routes>
             <Route path='/' element={<TestPage />} />
             <Route path='/test' element={<TestPage2 />} />
