@@ -1,13 +1,9 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-
-import { TestModule } from './test.module';
-
+import { FallbackModuleModule } from './fallback-modules/fallback-module.module';
 
 @Module({
-  imports: [TestModule],
-  controllers: [ AppController],
-  providers: [AppService],
+  imports: [FallbackModuleModule],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {}
