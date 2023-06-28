@@ -18,6 +18,7 @@ app.get('*', (req: Request, res: Response) => {
   res.sendFile(path.join(__dirname, "../" ,"./index.html"));
 });
 
+//3030이 아닌 3000으로 빌드하여 run start 할것
 app.listen(3030, () => {
   console.log('Server is running on port 3030');
 });
