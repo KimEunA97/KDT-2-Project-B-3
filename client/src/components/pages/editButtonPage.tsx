@@ -1,5 +1,5 @@
 import React from "react";
-import EditButton from '../common/editButtonSelect';
+import EditButton from '../common/selectButton';
 
 const testPage = ():JSX.Element=> {
   return <div>
