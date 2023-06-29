@@ -1,14 +1,11 @@
 import React, { useState } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
-// import Nav from './components/layout/footer';
 import Header from './components/layout/header';
 // import ProtoTestPage from './components/pages/testPageHer';
 // import Mainpage from './components/pages/Mainpage';
-// import Mainpage from './components/pages/mainPage';
-// import Custompage from './components/pages/Custompage';
-// import Loginpage3 from './components/pages/Loginpage';
-// import Listdiv from './components/services/Listdiv';
-// import TestPage2 from './components/pages/testPage2';
+import Custompage from './components/pages/Custompage';
+import MainPage from './components/pages/mainPage';
+import Listdiv from './components/services/Listdiv';
 import TestPage from './components/pages/testPage';
 import './test.css';
 const App = (): JSX.Element => {
@@ -35,9 +32,9 @@ const App = (): JSX.Element => {
     <div>
       <Header title={pageTitle} />
       <Routes>
-        {/* <Route path="/" element={<ProtoTestPage />} /> */}
+        <Route path="/" element={<ProtoTestPage />} />
         <Route path="/test" element={<TestPage />} />
-        {/* <Route path="/main" element={<Mainpage />} />
+        <Route path="/" element={<MainPage />} />
         <Route path="/custom" element={<Custompage />} />
         <Route path="/login" element={<Listdiv />} /> */}
       </Routes>
