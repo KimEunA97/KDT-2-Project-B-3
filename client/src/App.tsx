@@ -34,7 +34,7 @@ const App = (): JSX.Element => {
     <div>
       <Header title={pageTitle} />
       <Routes>
-        <Route path="/" element={<ProtoTestPage />} />
+        {/* <Route path="/" element={<ProtoTestPage />} /> */}
         {/* <Route path="/test" element={<TestPage2 />} /> */}
         <Route path="/" element={<Mainpage />} />
         <Route path="/custom" element={<Custompage />} />
