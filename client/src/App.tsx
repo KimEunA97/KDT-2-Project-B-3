@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import Header from './components/layout/header';
-import ProtoTestPage from './components/pages/testPageHer';
-// import Mainpage from './components/pages/Mainpage';
 import Custompage from './components/pages/Custompage';
-import MainPage from './components/pages/mainPage';
+import Mainpage from './components/pages/Mainpage';
+import ProtoTestPage from './components/pages/testPageHer';
 // import TestPage2 from './components/pages/testPage2';
-import LoginPage from './components/pages/loginpage';
+import LoginPage from './components/pages/Loginpage';
 import SignUpPage from './components/pages/signUpPage';
 const App = (): JSX.Element => {
   const location = useLocation();
@@ -33,7 +32,7 @@ const App = (): JSX.Element => {
       <Header title={pageTitle} />
       <Routes>
         <Route path="/" element={<ProtoTestPage />} />
-        <Route path="/" element={<MainPage />} />
+        <Route path="/main" element={<Mainpage />} />
         <Route path="/custom" element={<Custompage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signUp" element={<SignUpPage />} />
