@@ -6,7 +6,8 @@ import ProtoTestPage from './components/pages/testPageHer';
 import Custompage from './components/pages/Custompage';
 import MainPage from './components/pages/mainPage';
 // import TestPage2 from './components/pages/testPage2';
-import LoginPage from './components/pages/loginPage';
+import LoginPage from './components/pages/Loginpage';
+import SignUpPage from './components/pages/signUpPage';
 const App = (): JSX.Element => {
   const location = useLocation();
   const [pageTitle, setPageTitle] = useState('');
@@ -32,10 +33,10 @@ const App = (): JSX.Element => {
       <Header title={pageTitle} />
       <Routes>
         <Route path="/" element={<ProtoTestPage />} />
-        {/* <Route path="/test" element={<TestPage2 />} /> */}
         <Route path="/" element={<MainPage />} />
         <Route path="/custom" element={<Custompage />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/signUp" element={<SignUpPage />} />
       </Routes>
     </div>
   );
