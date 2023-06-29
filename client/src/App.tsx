@@ -4,7 +4,7 @@ import Header from './components/layout/header';
 import ProtoTestPage from './components/pages/testPageHer';
 import Custompage from './components/pages/Custompage';
 import Mainpage from './components/pages/mainpage';
-import TestPage from './components/pages/testPage';
+import Map from './components/pages/testPage';
 import LoginPage from './components/pages/loginPage';
 const App = (): JSX.Element => {
   const location = useLocation();
@@ -31,7 +31,7 @@ const App = (): JSX.Element => {
       <Header title={pageTitle} />
       <Routes>
         <Route path="/" element={<ProtoTestPage />} />
-        <Route path="/test" element={<TestPage />} />
+        <Route path="/test" element={<Map />} />
         <Route path="/main" element={<Mainpage />} />
         // <Route path="/custom" element={<Custompage />} />
         <Route path="/login" element={<LoginPage />} />

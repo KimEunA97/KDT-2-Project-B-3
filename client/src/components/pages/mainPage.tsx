@@ -3,7 +3,6 @@ import Restroombutton from '../services/Restroombutton';
 import Gas_stationbutton from '../services/Gas_stationbutton';
 import Local_convenience from '../services/Local_convenience';
 import Search from '../common/Search';
-import Listdiv from '../services/Listdiv';
 
 const Mainpage = (): JSX.Element => {
   const handleSearch = (searchTerm: string) => {
@@ -22,9 +21,6 @@ const Mainpage = (): JSX.Element => {
       </div>
       <div>
         <Local_convenience />
-      </div>
-      <div>
-        <Listdiv />
       </div>
     </div>
   );
