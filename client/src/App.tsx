@@ -6,7 +6,7 @@ import ProtoTestPage from './components/pages/testPageHer';
 import Custompage from './components/pages/Custompage';
 import MainPage from './components/pages/mainPage';
 // import TestPage2 from './components/pages/testPage2';
-import LoginPage from './components/pages/Loginpage';
+import LoginPage from './components/pages/loginpage';
 import SignUpPage from './components/pages/signUpPage';
 const App = (): JSX.Element => {
   const location = useLocation();

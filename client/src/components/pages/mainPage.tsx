@@ -1,9 +1,9 @@
 import React from 'react';
-import Restroombutton from '../services/Restroombutton';
-import Gas_stationbutton from '../services/Gas_stationbutton';
-import Local_convenience from '../services/Local_convenience';
 import Search from '../common/Search';
+import Gas_stationbutton from '../services/Gas_stationbutton';
 import Listdiv from '../services/Listdiv';
+import Local_convenience from '../services/Local_convenience';
+import Restroombutton from '../services/Restroombutton';
 
 const Mainpage = (): JSX.Element => {
   const handleSearch = (searchTerm: string) => {
