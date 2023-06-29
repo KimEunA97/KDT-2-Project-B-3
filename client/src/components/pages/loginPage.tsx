@@ -1,6 +1,6 @@
 import React from 'react';
 import Login from '../services/login';
-const Listdiv = (): JSX.Element => {
+const LoginPage = (): JSX.Element => {
   const style = {
     width: '100%',
     height: '300px',
@@ -13,4 +13,4 @@ const Listdiv = (): JSX.Element => {
   </div>;
 };
 
-export default Listdiv;
+export default LoginPage;
