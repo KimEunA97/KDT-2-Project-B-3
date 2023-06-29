@@ -3,11 +3,10 @@ import { Route, Routes, useLocation } from 'react-router-dom';
 // import Header from './components/layout/header';
 // import ProtoTestPage from './components/pages/testPageHer';
 // import Mainpage from './components/pages/Mainpage';
-// import Custompage from './components/pages/Custompage';
+import Custompage from './components/pages/Custompage';
 // import MainPage from './components/pages/mainPage';
-// import Listdiv from './components/services/Listdiv';
 import TestPage from './components/pages/testPage';
-import './test.css';
+// import LoginPage from './components/pages/loginPage';
 const App = (): JSX.Element => {
   const location = useLocation();
   const [pageTitle, setPageTitle] = useState('');
@@ -36,7 +35,7 @@ const App = (): JSX.Element => {
         <Route path="/test" element={<TestPage />} />
         {/* <Route path="/" element={<MainPage />} />
         <Route path="/custom" element={<Custompage />} />
-        <Route path="/login" element={<Listdiv />} /> */}
+        <Route path="/login" element={<LoginPage />} /> */}
       </Routes>
     </div>
   );
