@@ -1,7 +1,7 @@
 import express, { Request, Response } from 'express';
 import path from 'path';
 const app = express();
-const root = path.join(__dirname, "../")
+const root = path.join(__dirname, "../","..")
 const rootPublic = path.join(__dirname, "../", "../", "public")
 console.log(root)
 console.log(rootPublic)
