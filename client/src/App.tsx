@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import Nav from './components/layout/footer';
 import Header from './components/layout/header';
-import ProtoTestPage from './components/pages/testPageHer';
-import Mainpage from './components/pages/Mainpage';
+import MenuOpenPage from './components/pages/menuOpenPage';
+import Mainpage from './components/pages/mainPage';
 import Custompage from './components/pages/Custompage';
-import Loginpage3 from './components/pages/Loginpage';
+import Loginpage3 from './components/pages/loginPage';
 // import TestPage2 from './components/pages/testPage2';
 import './test.css';
 const App = (): JSX.Element => {
@@ -32,7 +32,7 @@ const App = (): JSX.Element => {
     <div>
       <Header title={pageTitle} />
       <Routes>
-        <Route path="/" element={<ProtoTestPage />} />
+        <Route path="/" element={<MenuOpenPage/>} />
         {/* <Route path="/test" element={<TestPage2 />} /> */}
         <Route path="/" element={<Mainpage />} />
         <Route path="/custom" element={<Custompage />} />
