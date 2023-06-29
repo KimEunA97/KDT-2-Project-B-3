@@ -2,26 +2,25 @@ import React, { useEffect } from 'react';
 
 declare global {
   interface Window {
-    Tmapv3: any;
-    jQuery: any;
+    Tmapv2: any;
   }
 }
 
 const TestPage = () => {
   useEffect(() => {
     const initTmap = () => {
-      const map = new window.Tmapv3.Map('map_div', {
-        center: new window.Tmapv3.LatLng(37.5652045, 126.98702028),
+      const map = new window.Tmapv2.Map('map_div', {
+        center: new window.Tmapv2.LatLng(37.5652045, 126.98702028),
         width: '100%',
         height: '400px',
         zoom: 16,
       });
 
       const addMarker = (lonlatoption: { title: string; lonlat: any }) => {
-        const marker = new window.Tmapv3.Marker({
-          position: new window.Tmapv3.LatLng(
-            lonlatoption.lonlat.latitude(),
-            lonlatoption.lonlat.longitude(),
+        const marker = new window.Tmapv2.Marker({
+          position: new window.Tmapv2.LatLng(
+            lonlatoption.lonlat._lat,
+            lonlatoption.lonlat._lng,
           ),
           map: map,
           title: lonlatoption.title,
@@ -41,7 +40,7 @@ const TestPage = () => {
           onProgress: onProgress,
           onError: onError,
         };
-        const tData = new window.Tmapv3.extension.TData();
+        const tData = new window.Tmapv2.extension.TData();
         tData.getPOIDataFromSearchJson(
           encodeURIComponent('호프집'),
           optionObj,
@@ -53,23 +52,21 @@ const TestPage = () => {
         console.log(responseData);
 
         if (responseData.searchPoiInfo.pois.poi !== '') {
-          window
-            .jQuery(responseData.searchPoiInfo.pois.poi)
-            .each(function (this: any) {
-              const name = this.name;
-              const id = this.id;
-              const lon = this.frontLon;
-              const lat = this.frontLat;
-              const lonlatoption = {
-                title: name,
-                lonlat: new window.Tmapv3.LatLng(lat, lon),
-              };
-              addMarker(lonlatoption);
-            });
+          responseData.searchPoiInfo.pois.poi.forEach((poi: any) => {
+            const name = poi.name;
+            const id = poi.id;
+            const lon = poi.frontLon;
+            const lat = poi.frontLat;
+            const lonlatoption = {
+              title: name,
+              lonlat: new window.Tmapv2.LatLng(lat, lon),
+            };
+            addMarker(lonlatoption);
+          });
         } else {
           alert('검색결과가 없습니다.');
         }
-        map.setCenter(new window.Tmapv3.LatLng(37.5652045, 126.98702028));
+        map.setCenter(new window.Tmapv2.LatLng(37.5652045, 126.98702028));
         map.setZoom(14);
       };
 
