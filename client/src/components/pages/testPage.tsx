@@ -51,21 +51,28 @@ const TestPage = () => {
       const onComplete = (responseData: any) => {
         console.log(responseData);
 
-        if (responseData.searchPoiInfo.pois.poi !== '') {
-          responseData.searchPoiInfo.pois.poi.forEach((poi: any) => {
-            const name = poi.name;
-            const id = poi.id;
-            const lon = poi.frontLon;
-            const lat = poi.frontLat;
-            const lonlatoption = {
-              title: name,
-              lonlat: new window.Tmapv2.LatLng(lat, lon),
-            };
-            addMarker(lonlatoption);
-          });
+        if (responseData.searchPoiInfo && responseData.searchPoiInfo.pois) {
+          const pois = responseData.searchPoiInfo.pois.poi;
+
+          if (pois !== '') {
+            pois.forEach((poi: any) => {
+              const name = poi.name;
+              const id = poi.id;
+              const lon = poi.frontLon;
+              const lat = poi.frontLat;
+              const lonlatoption = {
+                title: name,
+                lonlat: new window.Tmapv2.LatLng(lat, lon),
+              };
+              addMarker(lonlatoption);
+            });
+          } else {
+            alert('검색결과가 없습니다.');
+          }
         } else {
-          alert('검색결과가 없습니다.');
+          alert('유효한 응답 데이터가 아닙니다.');
         }
+
         map.setCenter(new window.Tmapv2.LatLng(37.5652045, 126.98702028));
         map.setZoom(14);
       };
