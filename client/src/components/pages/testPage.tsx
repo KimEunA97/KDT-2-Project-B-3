@@ -71,11 +71,12 @@ declare global {
 const Map: React.FC = () => {
   let map: { setCenter: (arg0: any) => void; setZoom: (arg0: number) => void };
   let marker_s, marker_e;
-
+  //! 지섭씨 설명
   useEffect(() => {
     const initTmap = () => {
       map = new window.Tmapv2.Map('map_div', {
-        center: new window.Tmapv2.LatLng(37.5652045, 126.98702028), //초기값
+        //! TMAP 초기값 설정
+        center: new window.Tmapv2.LatLng(37.5652045, 126.98702028),
         width: '100%',
         height: '400px',
         zoom: 19,
@@ -85,7 +86,7 @@ const Map: React.FC = () => {
         navigator.geolocation.getCurrentPosition(function (position) {
           const lat = position.coords.latitude;
           const lon = position.coords.longitude;
-          //!내껄로 사용해보기 -> 앱키
+          //!앱 키 내껄로 사용해보기 -> 속도 문제
           const options = {
             method: 'POST',
             headers: {
@@ -143,7 +144,7 @@ const Map: React.FC = () => {
             iconSize: new window.Tmapv2.Size(24, 38),
             map: map,
           });
-          //!나중에 쓸일이 있으면사용
+          //!나중에 쓸일이 있으면 사용 하기로함.
           //? 메시지 창
           const InfoWindow = new window.Tmapv2.InfoWindow({
             position: new window.Tmapv2.LatLng(lat, lon),
