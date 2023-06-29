@@ -11,28 +11,97 @@ const Map = () => {
     const initTmap = () => {
       const map = new window.Tmapv2.Map('map_div', {
         center: new window.Tmapv2.LatLng(
-          37.566481622437934,
-          126.98502302169841,
+          36.349255465400255,
+          127.37754005891684,
         ),
         width: '390px',
         height: '844px',
-        zoom: 18,
+        zoom: 15,
       });
       //Marker 객체 생성.
-      const marker = new window.Tmapv2.Marker({
-        position: new window.Tmapv2.LatLng(37.5652045, 126.98602028), //Marker의 중심좌표 설정.
-        map: map, //Marker가 표시될 Map 설정..
+      let marker = new window.Tmapv2.Marker({
+        position: new window.Tmapv2.LatLng(
+          36.349255465400255,
+          127.37754005891684,
+        ), //Marker의 중심좌표 설정.
+        map: map, //Marker가 표시될 Map 설정.
+      });
+
+      // LineString 표시
+      const lineCoordinates = [
+        [126.9823439963945, 37.56461982743129],
+        [126.98210513804034, 37.563703265276516],
+        [126.9817857308457, 37.56284502921221],
+        [126.98157186492477, 37.56247284870586],
+        [126.98124689891416, 37.56200067907546],
+      ];
+
+      let polyline = new window.Tmapv2.Polyline({
+        path: lineCoordinates.map(
+          (coord) => new window.Tmapv2.LatLng(coord[1], coord[0]),
+        ),
+        strokeColor: '#ff0000',
+        strokeWeight: 3,
+        map: map,
       });
     };
 
-    window.addEventListener('load', initTmap);
+    if (window.Tmapv2) {
+      initTmap();
+    } else {
+      const script = document.createElement('script');
+      script.src =
+        'https://apis.openapi.sk.com/tmap/jsv2?' +
+        'xzcK82uy9L4F0tX5C7RmC6Hpc9dpxvDp2ETeW89t' + // 사용자의 Tmap API 키로 변경
+        'version=1&' +
+        'callback=initTmap';
+      document.body.appendChild(script);
+    }
   }, []);
 
-  return <div id="map_div"></div>;
+  return <div id="map_div" style={{ width: '390px', height: '844px' }}></div>;
 };
 
 export default Map;
 
+// 1;
+
+// import React, { useEffect } from 'react';
+
+// declare global {
+//   interface Window {
+//     Tmapv2: any; // 또는 원하는 타입으로 변경
+//   }
+// }
+
+// const Map = () => {
+//   useEffect(() => {
+//     const initTmap = () => {
+//       const map = new window.Tmapv2.Map('map_div', {
+//         center: new window.Tmapv2.LatLng(
+//           37.566481622437934,
+//           126.98502302169841,
+//         ),
+//         width: '390px',
+//         height: '844px',
+//         zoom: 15,
+//       });
+//       //Marker 객체 생성.
+//       let marker = new window.Tmapv2.Marker({
+//         position: new window.Tmapv2.LatLng(37.5652045, 126.98602028), //Marker의 중심좌표 설정.
+//         map: map, //Marker가 표시될 Map 설정..
+//       });
+//     };
+
+//     window.addEventListener('load', initTmap);
+//   }, []);
+
+//   return <div id="map_div"></div>;
+// };
+
+// export default Map;
+
+//2
 // import React, { useEffect } from 'react';
 
 // declare global {
