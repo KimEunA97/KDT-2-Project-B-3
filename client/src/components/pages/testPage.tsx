@@ -19,7 +19,7 @@ const Map = () => {
         zoom: 18,
       });
       //Marker 객체 생성.
-      let marker = new window.Tmapv2.Marker({
+      const marker = new window.Tmapv2.Marker({
         position: new window.Tmapv2.LatLng(37.5652045, 126.98602028), //Marker의 중심좌표 설정.
         map: map, //Marker가 표시될 Map 설정..
       });

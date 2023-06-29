@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
-import Nav from './components/layout/footer';
+// import Nav from './components/layout/footer';
 import Header from './components/layout/header';
-import ProtoTestPage from './components/pages/testPageHer';
+// import ProtoTestPage from './components/pages/testPageHer';
 // import Mainpage from './components/pages/Mainpage';
-import Mainpage from './components/pages/mainPage';
-import Custompage from './components/pages/Custompage';
+// import Mainpage from './components/pages/mainPage';
+// import Custompage from './components/pages/Custompage';
 // import Loginpage3 from './components/pages/Loginpage';
-import Listdiv from './components/services/Listdiv';
+// import Listdiv from './components/services/Listdiv';
 // import TestPage2 from './components/pages/testPage2';
+import TestPage from './components/pages/testPage';
 import './test.css';
 const App = (): JSX.Element => {
   const location = useLocation();
@@ -35,10 +36,10 @@ const App = (): JSX.Element => {
       <Header title={pageTitle} />
       <Routes>
         {/* <Route path="/" element={<ProtoTestPage />} /> */}
-        {/* <Route path="/test" element={<TestPage2 />} /> */}
-        <Route path="/" element={<Mainpage />} />
+        <Route path="/test" element={<TestPage />} />
+        {/* <Route path="/main" element={<Mainpage />} />
         <Route path="/custom" element={<Custompage />} />
-        <Route path="/login" element={<Listdiv />} />
+        <Route path="/login" element={<Listdiv />} /> */}
       </Routes>
     </div>
   );
