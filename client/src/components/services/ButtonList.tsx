@@ -1,7 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import YesNoModal from '../common/YesNoModal';
 import Custombutton from './Custombutton';
+// createContext를 통해 새로운 컨텍스트 생성
+const MyContext = createContext<string>('');
+
 interface ButtonListProps {
   searchTerm: string;
 }
@@ -69,6 +72,9 @@ const ButtonList = ({ searchTerm }: ButtonListProps): JSX.Element => {
     navigate(`/edit`);
   };
 
+  // const provideContext = ()=> {
+  //   const selectedBtn = buttonValue;
+  // }
   return (
     <div>
       {selectedBtn}

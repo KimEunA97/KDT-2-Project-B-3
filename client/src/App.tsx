@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
-import BtnContext from './components/context/BtnContext';
+import BtnContext from './components/contextData/btnContext';
 import Header from './components/layout/header';
 import Custompage from './components/page/custompage';
 import EditButtonPage from './components/page/editButtonPage';

@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import Search from '../common/Search';
-import BtnContext from '../context/btnContext';
+import BtnContext from '../contextData/btnContext';
 import ButtonList from '../services/ButtonList';
 const testContext = useContext<any>(BtnContext)
 console.log(testContext)
