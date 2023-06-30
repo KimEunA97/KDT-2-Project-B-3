@@ -27,11 +27,8 @@ const Mainpage = (): JSX.Element => {
         <Local_convenience />
       </div>
       <div>
-        <Listdiv />
-      </div>
-      <div>
-      <div onClick={toggleMenu}>햄버거 메뉴</div>
-      {isOpen && <MyInfo />}
+        <div onClick={toggleMenu}>햄버거 메뉴</div>
+        {isOpen && <MyInfo />}
       </div>
     </div>
   );
