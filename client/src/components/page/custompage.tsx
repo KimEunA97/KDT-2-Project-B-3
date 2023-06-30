@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Search from '../common/Search';
+import BtnContext from '../context/btnContext';
 import ButtonList from '../services/ButtonList';
-
+const testContext = useContext<any>(BtnContext)
+console.log(testContext)
 const Custompage = (): JSX.Element => {
   const [searchTerm, setSearchTerm] = useState<string>('');
 
