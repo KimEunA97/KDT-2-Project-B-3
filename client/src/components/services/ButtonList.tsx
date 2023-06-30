@@ -9,7 +9,6 @@ interface ButtonListProps {
 interface Button {
   value: string;
   image: string;
-  name: string;
 }
 
 const ButtonList = ({ searchTerm }: ButtonListProps): JSX.Element => {
@@ -25,22 +24,18 @@ const ButtonList = ({ searchTerm }: ButtonListProps): JSX.Element => {
       {
         value: '편의점',
         image: 'convenience-store.jpg',
-        name: '편의점',
       },
       {
         value: '카페',
         image: 'cafe.jpg',
-        name: '카페',
       },
       {
         value: '주유소',
         image: 'gas-station.jpg',
-        name: '주유소',
       },
       {
         value: '화장실',
         image: 'restroom.jpg',
-        name: '화장실',
       },
     ];
 
@@ -48,7 +43,6 @@ const ButtonList = ({ searchTerm }: ButtonListProps): JSX.Element => {
     const additionalButton: Button = {
       value: '추가 버튼',
       image: 'additional-button.jpg',
-      name: '추가 버튼',
     };
 
     // 가상 데이터에 추가 버튼을 포함하여 상태에 설정
@@ -56,7 +50,7 @@ const ButtonList = ({ searchTerm }: ButtonListProps): JSX.Element => {
   }, []);
 
   const filteredButtons = buttons.filter((button) =>
-    button.name.includes(searchTerm),
+    button.value.includes(searchTerm),
   );
 
   const handleButtonClick = (buttonName: string) => {
@@ -73,7 +67,7 @@ const ButtonList = ({ searchTerm }: ButtonListProps): JSX.Element => {
     console.log('Confirmed'); // 확인 버튼을 클릭한 경우 수행할 로직
     setIsModalOpen(false); // 모달 닫기
     // 단축 버튼 편집 페이지로 이동시킴
-    navigate('/edit');
+    navigate(`/edit/${selectedBtn}`);
   };
 
   return (
@@ -83,7 +77,7 @@ const ButtonList = ({ searchTerm }: ButtonListProps): JSX.Element => {
         <Custombutton
           key={index}
           buttonInfo={button}
-          onClick={() => handleButtonClick(button.name)}
+          onClick={() => handleButtonClick(button.value)}
         />
       ))}
       {isModalOpen && (

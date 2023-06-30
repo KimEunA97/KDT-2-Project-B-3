@@ -6,6 +6,7 @@ const Custompage = (): JSX.Element => {
   const [searchTerm, setSearchTerm] = useState<string>('');
 
   const handleSearch = (searchValue: string) => {
+    
     setSearchTerm(searchValue);
   };
 

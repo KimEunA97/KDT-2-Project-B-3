@@ -3,7 +3,6 @@ import React from 'react';
 interface ButtonInfo {
   value: string;
   image: string;
-  name: string;
 }
 
 interface CustomButtonProps {
@@ -12,12 +11,11 @@ interface CustomButtonProps {
 }
 
 const CustomButton: React.FC<CustomButtonProps> = ({ buttonInfo, onClick }) => {
-  const { value, image, name } = buttonInfo;
+  const { value, image } = buttonInfo;
 
   return (
     <div onClick={onClick}>
-      <img src={image} alt={name} />
-      {value}
+      <img src={image} alt={value} />
     </div>
   );
 };
