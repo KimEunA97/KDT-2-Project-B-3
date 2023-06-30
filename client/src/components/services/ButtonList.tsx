@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import YesNoModal from '../common/YesNoModal';
 import Custombutton from './Custombutton';
-
 interface ButtonListProps {
   searchTerm: string;
 }
@@ -67,7 +66,7 @@ const ButtonList = ({ searchTerm }: ButtonListProps): JSX.Element => {
     console.log('Confirmed'); // 확인 버튼을 클릭한 경우 수행할 로직
     setIsModalOpen(false); // 모달 닫기
     // 단축 버튼 편집 페이지로 이동시킴
-    navigate(`/edit/${selectedBtn}`);
+    navigate(`/edit`);
   };
 
   return (
