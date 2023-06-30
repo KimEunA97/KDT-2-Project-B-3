@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
+import BtnContext from './components/context/BtnContext';
 import Header from './components/layout/header';
 import Custompage from './components/page/custompage';
 import EditButtonPage from './components/page/editButtonPage';
@@ -34,6 +35,11 @@ const App = (): JSX.Element => {
   return (
     <div>
       <Header title={pageTitle} />
+      <BtnContext.Provider value={[
+  { firstBtn: { value: "Toilet", img: "", btnName: "first" } },
+  { secondBtn: { value: "gasStation", img: "", btnName: "second" } },
+  { thirdBtn: { value: "convenienceStore", img: "", btnName: "third" } },
+]}>
       <Routes>
         <Route path="/" element={<ProtoTestPage />} />
         <Route path="/main" element={<Mainpage />} />
@@ -42,6 +48,7 @@ const App = (): JSX.Element => {
         {/* <Route path="/signUp" element={<SignUpPage />} /> */}
         <Route path="/edit" element={<EditButtonPage />} />
       </Routes>
+      </BtnContext.Provider>
     </div>
   );
 };
