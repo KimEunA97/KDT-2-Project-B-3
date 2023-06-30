@@ -38,7 +38,6 @@ const Map: React.FC = () => {
   let marker_s, marker_e;
 
   useEffect(() => {
-
     const initTmap = () => {
       map = new window.Tmapv2.Map('map_div', {
         center: new window.Tmapv2.LatLng(37.5652045, 126.98702028),
@@ -56,8 +55,8 @@ const Map: React.FC = () => {
             method: 'POST',
             headers: {
               accept: 'application/json',
-              appKey: 'xzcK82uy9L4F0tX5C7RmC6Hpc9dpxvDp2ETeW89t',
-              'content-type': 'application/json'
+              appKey: 'gWVA000w8I90fAUdRelLv18fug36Mj8C9P6SPQOa',
+              'content-type': 'application/json',
             },
             body: JSON.stringify({
               //* 요금 가중치 정보
@@ -100,31 +99,34 @@ const Map: React.FC = () => {
               // gpsInfoList: '126.939376564495,37.470947057194365,120430,20,50,5,2,12,1_126.939376564495,37.470947057194365,120430,20,50,5,2,12,1',
               detailPosFlag: '2',
               resCoordType: 'WGS84GEO',
-              sort: 'index'
-            })
+              sort: 'index',
+            }),
           };
-          
-          fetch('https://apis.openapi.sk.com/tmap/routes?version=1&callback=function', options)
-            .then(response => response.json())
-            .then(response => console.log(response))
-            .catch(err => console.error(err));
+
+          fetch(
+            'https://apis.openapi.sk.com/tmap/routes?version=1&callback=function',
+            options,
+          )
+            .then((response) => response.json())
+            .then((response) => console.log(response))
+            .catch((err) => console.error(err));
 
           //? 현재 마커
           marker_s = new window.Tmapv2.Marker({
             position: new window.Tmapv2.LatLng(lat, lon),
-            icon : "http://tmapapi.sktelecom.com/upload/tmap/marker/pin_r_m_s.png",
-						iconSize : new window.Tmapv2.Size(24, 38),
+            icon: 'http://tmapapi.sktelecom.com/upload/tmap/marker/pin_r_m_s.png',
+            iconSize: new window.Tmapv2.Size(24, 38),
             map: map,
           });
 
           //? 도착 마커
           marker_e = new window.Tmapv2.Marker({
             position: new window.Tmapv2.LatLng(36.345698, 127.373761),
-            icon : "http://tmapapi.sktelecom.com/upload/tmap/marker/pin_r_m_e.png",
-						iconSize : new window.Tmapv2.Size(24, 38),
+            icon: 'http://tmapapi.sktelecom.com/upload/tmap/marker/pin_r_m_e.png',
+            iconSize: new window.Tmapv2.Size(24, 38),
             map: map,
           });
-          
+
           //? 메시지 창
           const InfoWindow = new window.Tmapv2.InfoWindow({
             position: new window.Tmapv2.LatLng(lat, lon),
