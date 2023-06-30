@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import YesNoModal from '../common/YesNoModal';
 import Custombutton from './Custombutton';
+
 interface ButtonListProps {
   searchTerm: string;
 }
@@ -15,8 +16,7 @@ const ButtonList = ({ searchTerm }: ButtonListProps): JSX.Element => {
   const [buttons, setButtons] = useState<Button[]>([]);
   const [selectedBtn, setSelectedBtn] = useState<string>('');
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-  // 페이지 이동에 사용할 navigate
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // 페이지 이동에 사용할 navigate
 
   useEffect(() => {
     // 가상으로 가져온 버튼 데이터
@@ -53,9 +53,9 @@ const ButtonList = ({ searchTerm }: ButtonListProps): JSX.Element => {
     button.value.includes(searchTerm),
   );
 
-  const handleButtonClick = (buttonName: string) => {
-    console.log('Button clicked:', buttonName);
-    setSelectedBtn(buttonName);
+  const handleButtonClick = (buttonValue: string) => {
+    console.log('Button clicked:', buttonValue);
+    setSelectedBtn(buttonValue);
     setIsModalOpen(true); // 모달 열기
   };
 
