@@ -167,6 +167,7 @@ const CurrentLocation = () => {
 export default CurrentLocation;
 */
 
+/*
 import React, { useState, useEffect } from "react";
 
 const CurrentLocation = () => {
@@ -204,3 +205,165 @@ const CurrentLocation = () => {
 };
 
 export default CurrentLocation;
+*/
+
+/*
+import React, { useState, useEffect } from "react";
+
+const CurrentLocation = () => {
+  const [location, setLocation] = useState<{
+    latitude: number;
+    longitude: number;
+  }>();
+
+  useEffect(() => {
+    const handleLocation = (position: GeolocationPosition) => {
+      setLocation({
+        latitude: position.coords.latitude,
+        longitude: position.coords.longitude
+      });
+    };
+
+    const handleError = (error: GeolocationPositionError) => {
+      console.log(error);
+    };
+
+    const requestLocation = () => {
+      const options = {
+        maximumAge: 0,
+        timeout: 5000,
+        enableHighAccuracy: true
+      };
+
+      navigator.geolocation.getCurrentPosition(handleLocation, handleError, options);
+    };
+
+    const requestPermission = () => {
+      if (navigator.permissions) {
+        navigator.permissions.query({ name: "geolocation" })
+          .then(permissionStatus => {
+            if (permissionStatus.state === "granted") {
+              requestLocation();
+            } else if (permissionStatus.state === "prompt") {
+              const watchId = navigator.geolocation.watchPosition(handleLocation, handleError, {
+                maximumAge: 0,
+                timeout: 5000,
+                enableHighAccuracy: true
+              });
+              return () => {
+                navigator.geolocation.clearWatch(watchId);
+              };
+            } else {
+              console.log("위치 정보에 대한 액세스 권한이 거부되었습니다.");
+            }
+          })
+          .catch(error => {
+            console.log("Permission query error:", error);
+          });
+      } else {
+        console.log("Permissions API가 지원되지 않는 브라우저입니다.");
+      }
+    };
+
+    requestPermission();
+  }, []);
+
+  return (
+    <div>
+      <h1>Your current location is:</h1>
+      <p>
+        Latitude: {location?.latitude}<br />
+        Longitude: {location?.longitude}
+      </p>
+    </div>
+  );
+};
+
+export default CurrentLocation;
+*/
+
+
+import React, { useState, useEffect } from "react";
+
+const CurrentLocation = () => {
+  const [location, setLocation] = useState<{
+    latitude: number;
+    longitude: number;
+  }>();
+
+  useEffect(() => {
+    const handleLocation = (position: GeolocationPosition) => {
+      const { latitude, longitude } = position.coords;
+      setLocation({ latitude, longitude });
+      
+      // Reverse geocoding using OpenStreetMap Nominatim API
+      const url = 'https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=<span class="math-inline">\{latitude\}&lon\=</span>{longitude}';
+
+      const handleError = (error: GeolocationPositionError) => {
+        console.log(error);
+      };
+      
+      fetch(url)
+      .then(response => response.json())
+      .then(data => {
+      if (data.address) {
+      console.log("Your current address:", data.address);
+      }
+      })
+      .catch(error => {
+      handleError(error);
+      });
+      };
+    const requestLocation = () => {
+      const options = {
+        maximumAge: 0,
+        timeout: 5000,
+        enableHighAccuracy: true
+      };
+
+      navigator.geolocation.getCurrentPosition(handleLocation, handlelError, options);
+    };
+    
+    const requestPermission = () => {
+      if (navigator.permissions) {
+        navigator.permissions.query({ name: "geolocation" })
+          .then(permissionStatus => {
+            if (permissionStatus.state === "granted") {
+              requestLocation();
+            } else if (permissionStatus.state === "prompt") {
+              const watchId = navigator.geolocation.watchPosition(handleLocation, handleError, {
+                maximumAge: 0,
+                timeout: 5000,
+                enableHighAccuracy: true
+              });
+              return () => {
+                navigator.geolocation.clearWatch(watchId);
+              };
+            } else {
+              console.log("위치 정보에 대한 액세스 권한이 거부되었습니다.");
+            }
+          })
+          .catch(error => {
+            console.log("Permission query error:", error);
+          });
+      } else {
+        console.log("Permissions API가 지원되지 않는 브라우저입니다.");
+      }
+    };
+
+    requestPermission();
+  }, []);
+
+  return (
+    <div>
+      <h1>Your current location is:</h1>
+      <p>
+        Latitude: {location?.latitude}<br />
+        Longitude: {location?.longitude}
+      </p>
+    </div>
+  );
+};
+
+export default CurrentLocation;
+

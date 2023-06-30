@@ -32,7 +32,7 @@ const App = (): JSX.Element => {
     <div>
       <Header title={pageTitle} />
       <Routes>
-        <Route path="/" element={<CurrentPosition />} />
+        <Route path="/location" element={<CurrentPosition />} />
         {/* <Route path="/test" element={<TestPage2 />} /> */}
         <Route path="/" element={<MainPage />} />
         <Route path="/custom" element={<Custompage />} />
