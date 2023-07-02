@@ -42,7 +42,7 @@ const App = (): JSX.Element => {
         <Route path="/custom" element={<Custompage />} />
         <Route path="/login" element={<LoginPage />} />
         {/* <Route path="/signUp" element={<SignUpPage />} /> */}
-        <Route path="/edit/:buttonName" element={<EditButtonPage />} />
+        <Route path="/edit/:value/:image/:name" element={<EditButtonPage />} />
       </Routes>
       </BtnContext.Provider>
     </div>

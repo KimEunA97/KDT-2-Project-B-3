@@ -67,7 +67,8 @@ const ButtonList = ({ searchTerm }: ButtonListProps): JSX.Element => {
   const handleModalConfirm = () => {
     console.log('Confirmed:', buttons[selectedBtnIndex]);
     setIsModalOpen(false);
-    navigate(`/edit/$${Object.values(buttons[selectedBtnIndex])}`);
+    const selectedButton = buttons[selectedBtnIndex];
+    navigate(`/edit/${selectedButton.value}/${selectedButton.image}/${selectedButton.name}`);
   };
 
   return (
