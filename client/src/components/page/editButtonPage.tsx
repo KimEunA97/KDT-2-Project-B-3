@@ -17,8 +17,11 @@ interface ButtonParams {
 }
 
 const EditButtonPage: React.FC = () => {
+  // useContext
   const btnContextData :  Button[]= useContext(DefaultBtnData);
-  const [btnState, setBtnState]= useState(DefaultBtnData)
+  // 컨텍스트 데이터 관리
+  const [btnState, setBtnState]= useState(btnContextData);
+  // url 쿼리 데이터
   const { value, image, name } = useParams<ButtonParams>();
   const [selectedButton, setSelectedButton] = useState<number>(-1);
 
@@ -53,6 +56,7 @@ const EditButtonPage: React.FC = () => {
         }
         return button;
       });
+      setBtnState(updatedBtnContextData)
     }
   };
 
