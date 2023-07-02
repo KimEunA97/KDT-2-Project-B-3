@@ -1,8 +1,14 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 // import EditButton from '../common/editButtonSelect';
 import { DefaultBtnData } from "../context/btnContext";
-
+// 디폴트 버튼 인터페이스
+interface Button {
+  value: string;
+  image: string;
+  name: string;
+}
+// url로 가져온 데이터 인터페이스
 interface ButtonParams {
   value: string;
   image: string;
@@ -12,7 +18,7 @@ interface ButtonParams {
 
 
 const EditButtonPage: React.FC = () => {
-  const btnContextData = useContext(DefaultBtnData);
+  const btnContextData :  Button[]= useContext(DefaultBtnData);
   const { value, image, name } = useParams<ButtonParams>();
   const [selectedButton, setSelectedButton] = useState<number>(-1);
 
@@ -26,13 +32,17 @@ const EditButtonPage: React.FC = () => {
   console.log('Name:', name);
 
   const handleButtonSelect = (buttonIndex: number) => {
+    // 1, 2, 3번 state
     setSelectedButton(buttonIndex);
   };
-  
-  const handleConfirm  = ()=> {
-    if (selectedButton  !== -1) {
+  // 변경사항 확인하기 위한 콘솔
+  useEffect(() => {
+    console.log("제발 변해라:", btnContextData);
+  }, [btnContextData]);
+  const handleConfirm = () => {
+    if (selectedButton !== -1) {
       const updatedBtnContextData = btnContextData.map((button, index) => {
-        if (index === selectedButton ) {
+        if (index === selectedButton) {
           // 선택한 버튼의 정보로 업데이트
           return {
             value: value,
@@ -41,9 +51,10 @@ const EditButtonPage: React.FC = () => {
           };
         }
         return button;
-      });}
-
-  }
+  
+      });
+    }
+  };
 
   return (
     <div>
