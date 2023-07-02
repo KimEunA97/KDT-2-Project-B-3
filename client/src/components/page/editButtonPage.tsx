@@ -16,9 +16,9 @@ interface ButtonParams {
   [key: string]: string;
 }
 
-
 const EditButtonPage: React.FC = () => {
   const btnContextData :  Button[]= useContext(DefaultBtnData);
+  const [btnState, setBtnState]= useState(DefaultBtnData)
   const { value, image, name } = useParams<ButtonParams>();
   const [selectedButton, setSelectedButton] = useState<number>(-1);
 
@@ -41,6 +41,7 @@ const EditButtonPage: React.FC = () => {
   }, [btnContextData]);
   const handleConfirm = () => {
     if (selectedButton !== -1) {
+      console.log("눌리긴 함?")
       const updatedBtnContextData = btnContextData.map((button, index) => {
         if (index === selectedButton) {
           // 선택한 버튼의 정보로 업데이트
@@ -51,7 +52,6 @@ const EditButtonPage: React.FC = () => {
           };
         }
         return button;
-  
       });
     }
   };
