@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import YesNoModal from '../common/YesNoModal';
 import { BtnContext } from '../context/btnContext';
 import Custombutton from './Custombutton';
+import '../style/custombtn';
 
 interface ButtonListProps {
   searchTerm: string;

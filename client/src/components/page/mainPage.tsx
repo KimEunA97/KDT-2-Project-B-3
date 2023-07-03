@@ -4,6 +4,8 @@ import Search from '../common/Search';
 // import Listdiv from '../services/Listdiv';
 import MainBtn from '../common/mainbtn';
 import '../style/Header.css'
+import hamburgerImage from '../images/hamburger.png'
+
 
 
 const Mainpage = (): JSX.Element => {
@@ -20,7 +22,7 @@ const Mainpage = (): JSX.Element => {
       {/* 검색바와 검색버튼 부분 */}
       <div className='container'>
         <Search onSearch={handleSearch} />
-        <div className='hamburgerMenu' onClick={toggleMenu}></div>
+        <div className='hamburgerMenu' onClick={toggleMenu}><img className='img' src={hamburgerImage} alt=''/></div>
         {isOpen && <MyInfo />}
       </div>
       {/* 커스텀 버튼리스트 부분 */}

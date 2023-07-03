@@ -1,7 +1,8 @@
 import React from "react";
 import Info from '../common/myInfo';
 import Book from '../common/myBookMark';
-//import './OpenMenu.module.css';
+import bellImage from '../images/notification.png'
+import settingImage from '../images/setting.png'
 
 const OpenMenuPage = ():JSX.Element =>{
   return (
@@ -9,14 +10,14 @@ const OpenMenuPage = ():JSX.Element =>{
 
     <div className="header">
       <p>Jin님, 환영합니다.</p> 
-      <img className="alertBtn" alt="알림이미지 들어갈 부분" />
+      <img className="imgSize" src= {bellImage} alt="" />
     </div>
 
     <Info />
     <Book />
     
     <div className="setting">
-      <button className="settingBtn"></button>
+      <button className="settingBtn"><img src={settingImage} alt="" /></button>
     </div>
 
     <div className="footer">

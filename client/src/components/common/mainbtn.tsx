@@ -12,7 +12,7 @@ const MainBtn = (): JSX.Element => {
         const { name, image } = data;
         console.log("이게 이미지 이름입니다",image )
         return (
-          <div key={index}>
+          <div className='mainBtnContainer' key={index}>
             <div className="main-button">
               <img src={image} alt={name} />
             </div>
