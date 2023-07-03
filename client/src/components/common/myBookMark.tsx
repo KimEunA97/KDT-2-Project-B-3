@@ -12,7 +12,7 @@ const myBookMark = ():JSX.Element =>{
     </div>
 
     <div className="btnContainer">
-      즐겨찾기
+    <strong>즐겨찾기</strong>
       <img className="starBtn" alt="즐겨찾기 표시" />
     </div>
     
