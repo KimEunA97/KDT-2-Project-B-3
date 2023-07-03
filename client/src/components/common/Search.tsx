@@ -22,15 +22,17 @@ const Search: React.FC<SearchProps> = ({ onSearch }) => {
   return (
     <div>
       <div className='container'>
+        <div className='searchContainer'>
         <input className='searchBar'
           type="text"
           placeholder="Search..."
           value={searchTerm}
           onChange={handleInputChange}
         />
-        <button className='searchButton' onClick={handleSearch}></button>
-        <div className='hamburgerMenu'></div>
-        {showList.length > 0 && <Listdiv />}
+        <div className='searchButton' onClick={handleSearch}><img src="../images/Search.png" alt=''/></div>
+        </div>
+        {/* <div className='hamburgerMenu'></div> */}
+        {/* {showList.length > 0 && <Listdiv />} */}
       </div>
           {/* {showList.length > 0 && <Listdiv />} */}
     </div>

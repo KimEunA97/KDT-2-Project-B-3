@@ -3,6 +3,9 @@ import MyInfo from '../common/myInfo';
 import Search from '../common/Search';
 // import Listdiv from '../services/Listdiv';
 import MainBtn from '../common/mainbtn';
+import '../style/Header.css'
+
+
 const Mainpage = (): JSX.Element => {
   const handleSearch = (searchTerm: string) => {
     // Handle the search logic here
@@ -14,15 +17,19 @@ const Mainpage = (): JSX.Element => {
   };
   return (
     <div>
-      <Search onSearch={handleSearch} />
-      <div>
-        <MainBtn />
-      </div>
-
-      <div>
-        <div onClick={toggleMenu}>햄버거 메뉴</div>
+      {/* 검색바와 검색버튼 부분 */}
+      <div className='container'>
+        <Search onSearch={handleSearch} />
+        <div className='hamburgerMenu' onClick={toggleMenu}></div>
         {isOpen && <MyInfo />}
       </div>
+      {/* 커스텀 버튼리스트 부분 */}
+        <MainBtn /> 
+
+      {/* <div>
+        <div className='hamburgerMenu' onClick={toggleMenu}></div>
+        {isOpen && <MyInfo />}
+      </div> */}
     </div>
   );
 };

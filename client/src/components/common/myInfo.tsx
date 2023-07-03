@@ -7,7 +7,7 @@ const MyInfo = (): JSX.Element => {
     <div className='myInfo'>
       <h3>내 정보</h3>
       <div><strong>최근 운행 정보</strong></div>
-      <Link to="/custom">
+      <Link to="/custom" style={{textDecoration: "none", color: "black"}}>
         <div><strong>단축 편집 버튼</strong></div>
       </Link>
     </div>

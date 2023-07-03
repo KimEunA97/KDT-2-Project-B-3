@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 // import EditButton from '../common/editButtonSelect';
 import { DefaultBtnContext } from "../context/btnContext";
+import '../style/custombtn.css';
+
 // url로 가져온 데이터 인터페이스
 interface ButtonParams {
   value: string;
