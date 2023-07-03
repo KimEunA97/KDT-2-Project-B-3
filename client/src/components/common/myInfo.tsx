@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-const myInfo = (): JSX.Element => {
+const MyInfo = (): JSX.Element => {
   return(
     <div>
       <h3>내 정보</h3>
@@ -10,6 +10,6 @@ const myInfo = (): JSX.Element => {
       </Link>
     </div>
   )
-} 
+}
 
-export default myInfo;
+export default MyInfo;

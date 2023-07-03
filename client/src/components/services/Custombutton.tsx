@@ -15,10 +15,10 @@ const CustomButton: React.FC<CustomButtonProps> = ({ buttonInfo, onClick }) => {
   const { value, image, name } = buttonInfo;
 
   return (
-    <button onClick={onClick}>
+    <div onClick={onClick}>
       <img src={image} alt={name} />
       {value}
-    </button>
+    </div>
   );
 };
 
