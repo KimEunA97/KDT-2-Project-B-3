@@ -1,8 +1,8 @@
-import React, { useContext, useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-// import EditButton from '../common/editButtonSelect';
-import { DefaultBtnContext } from "../context/btnContext";
-// url로 가져온 데이터 인터페이스
+import React, { useContext, useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import { DefaultBtnContext } from '../context/btnContext';
+import '../style/editpage.css';
+
 interface ButtonParams {
   value: string;
   image: string;
@@ -12,12 +12,8 @@ interface ButtonParams {
 
 const EditButtonPage: React.FC = () => {
   const navigate = useNavigate();
-  // 기본 버튼 useContext
   const { btnContextData, updateBtnContext } = useContext(DefaultBtnContext);
-
-  // 1, 2, 3버튼 상태 관리
   const [selectedButton, setSelectedButton] = useState<number>(-1);
-  // url 쿼리 데이터 객체에 담아 사용
   const { value, image, name } = useParams<ButtonParams>();
 
   //? 데이터 못 가져왔을 때 예외처리
@@ -31,7 +27,7 @@ const EditButtonPage: React.FC = () => {
     // 버튼 데이터를 handleConfirm()에서 사용
     setSelectedButton(buttonIndex);
   };
-  
+
   const handleConfirm = () => {
     if (selectedButton !== -1) {
       // btnContextData의 n번째 데이터를 url로 받은 데이터로 재할당
@@ -40,17 +36,16 @@ const EditButtonPage: React.FC = () => {
         if (index === selectedButton) {
           //! 현재 이미지 URL을https://ko.imgbb.com/에서 생성해서 적용한 상태입니다. 리터럴로 되있는 상태인데 해결해야합니다
           // 데이터 재할당
-          const imageUrl = "https://i.ibb.co/d6nBjHQ/cafe.png" ;
+          const imageUrl = 'https://i.ibb.co/d6nBjHQ/cafe.png';
           return {
             value: value,
             image: imageUrl,
             name: name,
           };
         }
-        console.log("제발",button)
         return button;
       });
-      alert("적용이 완료됐습니다.");
+      alert('적용이 완료됐습니다.');
       // updateBtnContext 메서드로 provider 데이터 업데이트
       updateBtnContext(updatedBtnContextData);
       // 변경후에 main페이지로 이동
@@ -59,34 +54,41 @@ const EditButtonPage: React.FC = () => {
   };
 
   useEffect(() => {
-    setSelectedButton(0); // 첫 로딩시 0번 버튼에 CSS 적용
+    setSelectedButton(0);
   }, []);
 
   return (
     <div>
-    <p><strong>어떤 버튼에 적용하겠습니까?</strong></p>
+      <div className="edit_container">
+        <p className="center-align">
+          <strong>어떤 버튼에 적용하겠습니까?</strong>
+        </p>
 
-    <div
-      onClick={() => handleButtonSelect(0)}
-      style={{ backgroundColor: selectedButton === 0 ? 'navy' : '' }}
-    >
-      1
+        <div
+          onClick={() => handleButtonSelect(0)}
+          className={selectedButton === 0 ? 'edit_btn selected' : 'edit_btn'}
+        >
+          1
+        </div>
+        <div
+          onClick={() => handleButtonSelect(1)}
+          className={selectedButton === 1 ? 'edit_btn selected' : 'edit_btn'}
+        >
+          2
+        </div>
+        <div
+          onClick={() => handleButtonSelect(2)}
+          className={selectedButton === 2 ? 'edit_btn selected' : 'edit_btn'}
+        >
+          3
+        </div>
+      </div>
+      <div>
+        <button className="confirm" onClick={handleConfirm}>
+          확인
+        </button>
+      </div>
     </div>
-    <div
-      onClick={() => handleButtonSelect(1)}
-      style={{ backgroundColor: selectedButton === 1 ? 'navy' : '' }}
-    >
-      2
-    </div>
-    <div
-      onClick={() => handleButtonSelect(2)}
-      style={{ backgroundColor: selectedButton === 2 ? 'navy' : '' }}
-    >
-      3
-    </div>
-
-    <button onClick={handleConfirm}>확인</button>
-  </div>
   );
 };
 
