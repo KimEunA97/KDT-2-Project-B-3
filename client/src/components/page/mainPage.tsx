@@ -15,7 +15,7 @@ const Mainpage = (): JSX.Element => {
   return (
     <div>
       <Search onSearch={handleSearch} />
-      <div>
+      <div className="main-button-container">
         <MainBtn />
       </div>
 
