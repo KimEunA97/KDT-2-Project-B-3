@@ -15,7 +15,7 @@ const YesNoModal: React.FC<ConfirmationModalProps> = ({
   return (
     <div className={`modal ${isOpen ? 'open' : ''}`}>
       <div className="modal-content">
-        <p className="modal-text">정말 적용하시겠습니까?</p>
+        <p className="modal-text">이 버튼을 선택하시겠습니까?</p>
         <div className="button-container">
           <button className="custom-button" onClick={onConfirm}>
             예

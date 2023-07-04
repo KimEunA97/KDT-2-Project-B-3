@@ -5,14 +5,14 @@ import convenienceStoreImage from '../images/convenience-store.png';
 import gasStationImage from '../images/gas_station.png';
 import restroomImage from '../images/restroom.png';
 
-// 최초 컨텍스트에 더미 데이터 넣음
+// 버튼 관련 데이터 인터페이스
 export interface Button {
   value: string;
   image: string;
   name: string;
 }
 // ! 기본 버튼 데이터(3개)
-// 디폴트 데이터
+// 기본 버튼 데이터
 const DefaultBtnContextData: Button[] = [
   {
     value: '편의점',
@@ -30,14 +30,15 @@ const DefaultBtnContextData: Button[] = [
     name: '주유소',
   },
 ];
-  // 컨텍스트 API 생성
+  // 기본 버튼 컨텍스트 API 생성
   const DefaultBtnContext = createContext<{ btnContextData: Button[]; updateBtnContext: (updatedData: Button[]) => void }>({
     btnContextData: DefaultBtnContextData,
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
     updateBtnContext: () => {},
   });
 
 // ! 모든 버튼 데이터
-// 컨텍스트에 사용 할 데이터
+// 모든 버튼 컨텍스트에 사용 할 데이터
 const BtnContextData: Button[] = [
   {
     value: '편의점',
@@ -60,22 +61,24 @@ const BtnContextData: Button[] = [
     name: '화장실',
   },
 ];
-// 컨텍스트 API 생성
+// 모든 버튼 컨텍스트 API 생성
 const BtnContext = createContext<Button[]>(BtnContextData);
 
-// 프로바이더 함수 인터페이스
+// provider 모듈 인터페이스
 interface DefaultBtnContextProviderProps {
   children: ReactNode;
 }
-
+// provider 모듈
 export const DefaultBtnContextProvider: React.FC<DefaultBtnContextProviderProps> = ({ children }: DefaultBtnContextProviderProps) => {
+  // provider 제공 데이터 상태 관리
   const [btnContextData, setBtnContextData] = useState<Button[]>(DefaultBtnContextData);
-
+  //  provider 제공 데이터 업데이트 함수
   const updateBtnContext = (updatedData: Button[]) => {
     setBtnContextData(updatedData);
   };
 
   return (
+    // 업데이트 함수, 기본 데이터 제공
     <DefaultBtnContext.Provider value={{ btnContextData, updateBtnContext }}>
       {children}
     </DefaultBtnContext.Provider>
