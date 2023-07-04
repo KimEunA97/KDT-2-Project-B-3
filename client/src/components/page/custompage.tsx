@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import Search from '../common/Search';
 import ButtonList from '../services/ButtonList';
 import YesNoModal from '../common/YesNoModal';
+
 import '../style/custombtn.css';
+
 const Custompage = (): JSX.Element => {
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false); // 모달 열림
@@ -28,7 +30,6 @@ const Custompage = (): JSX.Element => {
     <div className="custompage-container">
       <Search onSearch={handleSearch} />
       <div className="button-container">
-        {' '}
         {/* 버튼 목록을 감싸는 컨테이너 */}
         <ButtonList searchTerm={searchTerm} />
       </div>
