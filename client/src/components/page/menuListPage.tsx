@@ -4,6 +4,27 @@ import Book from '../common/myBookMark';
 //import alarm from '../images/notification.png';
 import settingImage from '../images/setting.png';
 import '../style/OpenMenu.css';
+//import styled from "styled-components";
+
+
+////////////////////////////////////
+// const SideBarWrap = styled.div`
+//   z-index: 5;
+//   padding: 12px;
+//   border-radius: 15px 0 0 15px;
+//   background-color: #e7e4e1;
+//   height: 100%;
+//   width: 55%;
+//   right: -55%;
+//   top: 0;
+//   position: fixed;
+//   transition: 0.5s ease;
+//   &.open {
+//     right: 0;
+//     transition: 0.5s ease;
+//   }
+// `;
+////////////////////////////////////
 
 
 function OpenMenuPage(): JSX.Element {
