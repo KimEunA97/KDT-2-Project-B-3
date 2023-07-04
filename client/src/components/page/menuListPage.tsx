@@ -29,7 +29,7 @@ import '../style/OpenMenu.css';
 
 function OpenMenuPage(): JSX.Element {
   return (
-    <div className="body">
+    <div className="menuToggle">
 
       <div className="header">
         <p>Jin님, 환영합니다.</p>
