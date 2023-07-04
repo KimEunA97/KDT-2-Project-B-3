@@ -67,30 +67,18 @@
   align-items: center;
 }
 
-/*마이로그 버튼*/
-.myLogBtn{
+/*마이로그, 즐겨찾기 버튼*/
+.buttonStyle{
   width: 43px;
   height: 43px;
   border-radius: 10px;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
   background: none;
+  cursor: pointer;
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
-  border: none;
-}
-
-/*즐겨찾기 버튼*/
-.starBtn{
-  width: 43px;
-  height: 43px;
-  border-radius: 10px;
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
-  background: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: none;
 }
 
 /*설정부분 컨테이너*/
@@ -101,40 +89,29 @@
 }
 
 /*설정버튼*/
-.settingBtn{
+.settingButton{
   width: 35px;
   height: 35px;
   border-radius: 10px;
-  border-color: none;
+  border: none;
   background-color: #ffffff;
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+  /* box-shadow: 0 0 4px rgba(0, 0, 0, 0.5); */
   cursor: pointer;
+  position: relative;
+  top: 40px;
+  right: 20px;
 }
 
 /*고객선테,로그아웃 컨테이너*/
 .footer{
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
 }
 
-/*고객센터 버튼*/
-.callCenter{
-  width: 97px;
-  height: 34px;
-  border-radius: 10px;
-  background-color: #ffffff;
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
-  cursor: pointer;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-}
-
-/*로그아웃 버튼*/
-.logOut{
+/*고객센터, 로그아웃 버튼*/
+.footerButton{
   width: 97px;
   height: 34px;
   border-radius: 10px;
@@ -148,6 +125,6 @@
 }
 
 .imgSize{
-  width: 35px;
-  height: 35px;
+  width: 30px;
+  height: 30px;
 }

@@ -19,12 +19,12 @@ function OpenMenuPage(): JSX.Element {
       <Book />
 
       <div className="setting">
-        <button className="settingBtn"><img src={settingImage} alt="" /></button>
+        <button className="settingButton"><img src={settingImage} className="imgSize" alt="" /></button>
       </div>
 
       <div className="footer">
-        <button className="callCenter">고객센터</button>
-        <button className="logOut">로그아웃</button>
+        <button className="footerButton">고객센터</button>
+        <button className="footerButton">로그아웃</button>
       </div>
 
     </div>

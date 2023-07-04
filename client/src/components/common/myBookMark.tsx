@@ -1,7 +1,7 @@
 import React from "react";
-import '../style/OpenMenu.css';
 import labelImage from '../images/bookmark.png'
 import starImage from '../images/star.png'
+import '../style/OpenMenu.css';
 
 const myBookMark = ():JSX.Element =>{
   return (
@@ -9,13 +9,13 @@ const myBookMark = ():JSX.Element =>{
 
     <div className="btnContainer">
       <strong>마이로그</strong>
-      <button><img className="imgSize" src={labelImage}
+      <button className="buttonStyle"><img className="imgSize" src={labelImage}
        alt="북마크 표시" /></button>
     </div>
 
     <div className="btnContainer">
     <strong>즐겨찾기</strong>
-    <button><img className="imgSize" src={starImage} alt="즐겨찾기 표시" /></button>
+    <button className="buttonStyle"><img className="imgSize" src={starImage} alt="즐겨찾기 표시" /></button>
     </div>
     
     </div>

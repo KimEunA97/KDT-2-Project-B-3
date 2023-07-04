@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-//import '../style/OpenMenu.module.css';
+import '../style/OpenMenu.css';
 
 const MyInfo = (): JSX.Element => {
   return (
