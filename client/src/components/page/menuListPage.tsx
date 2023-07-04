@@ -12,7 +12,7 @@ function OpenMenuPage(): JSX.Element {
 
       <div className="header">
         <p>Jin님, 환영합니다.</p>
-        {/* <img className="imgSize" src={alarm} alt="" /> */}
+         {/* <button className="settingButton"><img className="imgSize" src={alarm} alt="" /></button>  */}
       </div>
 
       <Info />

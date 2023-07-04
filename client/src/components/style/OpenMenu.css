@@ -4,6 +4,8 @@
   z-index: auto;
   width: 266px;
   height: 844px;
+  margin: 15px;
+  padding: 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -33,7 +35,7 @@
 .myInfo{
   width: 246px;
   height: 203px;
-  padding: 10px;
+  padding-left: 12px;
   border-radius: 10px;
   border-color: none;
   background-color: #ffffff;
