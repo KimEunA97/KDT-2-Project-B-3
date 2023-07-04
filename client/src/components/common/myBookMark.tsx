@@ -9,13 +9,13 @@ const myBookMark = ():JSX.Element =>{
 
     <div className="btnContainer">
       <strong>마이로그</strong>
-      <img className="imgSize" src={labelImage}
-       alt="북마크 표시" />
+      <button><img className="imgSize" src={labelImage}
+       alt="북마크 표시" /></button>
     </div>
 
     <div className="btnContainer">
     <strong>즐겨찾기</strong>
-      <img className="imgSize" src={starImage} alt="즐겨찾기 표시" />
+    <button><img className="imgSize" src={starImage} alt="즐겨찾기 표시" /></button>
     </div>
     
     </div>

@@ -3,6 +3,8 @@ import Info from '../common/myInfo';
 import Book from '../common/myBookMark';
 //import alarm from '../images/notification.png';
 import settingImage from '../images/setting.png';
+import '../style/OpenMenu.css';
+
 
 function OpenMenuPage(): JSX.Element {
   return (
