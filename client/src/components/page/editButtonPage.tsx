@@ -59,11 +59,10 @@ const EditButtonPage: React.FC = () => {
 
   return (
     <div>
+      <p className="center-align">
+        <strong>어떤 버튼에 적용하겠습니까?</strong>
+      </p>
       <div className="edit_container">
-        <p className="center-align">
-          <strong>어떤 버튼에 적용하겠습니까?</strong>
-        </p>
-
         <div
           onClick={() => handleButtonSelect(0)}
           className={selectedButton === 0 ? 'edit_btn selected' : 'edit_btn'}
