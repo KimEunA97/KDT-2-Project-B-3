@@ -1,3 +1,8 @@
+body{
+  width: 100vw;
+  height: 100vh;
+}
+
 /* 편집 버튼 */
 .edit_btn {
   display: flex;
