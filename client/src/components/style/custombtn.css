@@ -1,3 +1,8 @@
+body{
+  width: 100vW;
+  height: 100vh;
+}
+
 .custompage-container {
   display: flex;
   flex-direction: column;
