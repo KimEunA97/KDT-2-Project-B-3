@@ -60,6 +60,14 @@ registerRoute(
     ],
   })
 );
+// 해당 코드는 브라우저에서 새로운 서비스 워커가 설치되었을 때 이전 서비스 워커를 비활성화하는 역할을 합니다.
+self.addEventListener('activate', (event) => {
+  event.waitUntil(
+    // 모든 클라이언트들에게 현재 페이지를 새로고침하도록 메시지를 보냅니다.
+    self.clients.claim()
+  );
+});
+
 
 // This allows the web app to trigger skipWaiting via
 // registration.waiting.postMessage({type: 'SKIP_WAITING'})
