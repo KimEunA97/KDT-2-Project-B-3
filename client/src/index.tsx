@@ -1,17 +1,8 @@
-// 서비스 워커 등록
-if ("serviceWorker" in navigator) {
-  window.addEventListener("load", () => {
-    navigator.serviceWorker
-      .register("/public/service-worker.js")
-      .then((registration) => {
-        console.log("Service Worker registered:", registration);
-      })
-      .catch((error) => {
-        console.log("Error registering Service Worker:", error);
-      });
-  });
-}
 import React from "react";
+import * as serviceWorkerRegistration from './serviceWorkerRegistration';
+
+serviceWorkerRegistration.register();
+
 
 import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
