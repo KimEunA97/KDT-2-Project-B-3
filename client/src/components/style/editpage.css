@@ -1,0 +1,71 @@
+/* 전체 사이즈  */
+body{
+  width: 100vw;
+  height: 100vh;
+}
+
+/* 편집 버튼 */
+.edit_btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  margin-right: 35px;
+  margin-top: 20px;
+}
+
+/* 활성화된 버튼 남색으로 변경 */
+.edit_btn.selected {
+  background-color: #0C0FAC;
+  border: 4px solid #FFEB93;
+}
+
+/* 확인 버튼 */
+.confirm {
+  background-color: #0C0FAC;
+  color: white;
+  border-radius: 10px;
+  padding: 10px;
+  width: 96px;
+  height: 51px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+/* <p> 태그 중앙 정렬 */
+.center-align {
+  text-align: center;
+  margin-top: 80px;
+}
+
+/* 편집 컨테이너 */
+.edit_container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 390px;
+  height: 450px;
+  margin: 0 auto;
+}
+
+
+/* 버튼 컨테이너 가로 정렬 */
+.edit_container .edit_btn_container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+/* 컨테이너 내부 요소 정렬 */
+.container-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

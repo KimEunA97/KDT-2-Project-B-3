@@ -14,7 +14,7 @@ interface Button {
   name: string;
 }
 
-const ButtonList = ({ searchTerm }: ButtonListProps): JSX.Element => {
+const ButtonList = ({}: ButtonListProps): JSX.Element => {
   // 버튼 상태
   const [buttons, setButtons] = useState<Button[]>([]);
   const [selectedBtnIndex, setSelectedBtnIndex] = useState<number>(-1);
@@ -56,17 +56,17 @@ const ButtonList = ({ searchTerm }: ButtonListProps): JSX.Element => {
 
     setButtons([...virtualButtons, additionalButton]);
   }, []);
-// 토글 이벤트
+  // 토글 이벤트
   const handleButtonClick = (buttonIndex: number) => {
     console.log('Button clicked:', buttons[buttonIndex]);
     setSelectedBtnIndex(buttonIndex);
     setIsModalOpen(true);
   };
-// 토글 닫기
+  // 토글 닫기
   const handleModalClose = () => {
     setIsModalOpen(false);
   };
-// 토글 -> url 쿼리에 데이터 담고 페이지 이동
+  // 토글 -> url 쿼리에 데이터 담고 페이지 이동
   const handleModalConfirm = () => {
     console.log('Confirmed:', buttons[selectedBtnIndex]);
     setIsModalOpen(false);
@@ -77,7 +77,7 @@ const ButtonList = ({ searchTerm }: ButtonListProps): JSX.Element => {
   };
 
   return (
-    <div>
+    <>
       {btnContextData.map((button, index) => (
         <Custombutton
           key={index}
@@ -92,7 +92,7 @@ const ButtonList = ({ searchTerm }: ButtonListProps): JSX.Element => {
           onConfirm={handleModalConfirm}
         />
       )}
-    </div>
+    </>
   );
 };
 

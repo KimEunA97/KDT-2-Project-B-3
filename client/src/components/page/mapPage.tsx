@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
+import { Button, DefaultBtnContextData } from '../context/btnContext';
+// import '../style/map.css';
 
 declare global {
   interface Window {
@@ -40,11 +42,20 @@ declare global {
   }
 }
 
-const Map: React.FC = () => {
+const Map: React.FC<{ selectedBtn: string }> = ({ selectedBtn }) => {
+  const DefaultBtnContext = createContext<{
+    btnContextData: Button[];
+    updateBtnContext: (updatedData: Button[]) => void;
+  }>({
+    btnContextData: DefaultBtnContextData,
+    updateBtnContext: () => {},
+  });
   const [dynamicDiv, setDynamicDiv] = useState<JSX.Element | null>(null);
-  let map: any;
+  const [map, setMap] = useState<any>(null);
+  const defaultBtnContext = useContext(DefaultBtnContext);
+  const { btnContextData } = defaultBtnContext;
 
-  // 페이지가 로딩이 된 후 호출하는 함수입니다.
+  //! 페이지가 로딩이 된 후 호출하는 함수입니다.
   function initTmap() {
     let marker_s;
     if (navigator.geolocation) {
@@ -53,12 +64,13 @@ const Map: React.FC = () => {
         let lon = position.coords.longitude;
         // map 생성
         // Tmap.map을 이용하여, 지도가 들어갈 div, 넓이, 높이를 설정합니다.
-        map = new window.Tmapv2.Map('map_div', {
+        const newMap = new window.Tmapv2.Map('map_div', {
           center: new window.Tmapv2.LatLng(lat, lon), // 지도 초기 좌표
-          width: '390px', // 지도의 넓이
-          height: '844px', // 지도의 높이
+          width: '100%', // 지도의 넓이
+          height: '100%', // 지도의 높이
           zoom: 18, // 지도의 줌레벨
         });
+        setMap(newMap);
         marker_s = new window.Tmapv2.Marker({
           position: new window.Tmapv2.LatLng(lat, lon),
           icon: 'https://i.ibb.co/pyJJ1MF/circle.png',
@@ -70,7 +82,7 @@ const Map: React.FC = () => {
     }
   }
 
-  // 마커의 옵션을 설정해주는 함수입니다.
+  //! 마커의 옵션을 설정해주는 함수입니다.
   function addMarker(lonlatoption: {
     lonlat: any;
     position: any;
@@ -90,12 +102,12 @@ const Map: React.FC = () => {
       ),
       icon: lonlatoption.icon,
       iconSize: lonlatoption.iconSize,
-      map: map,
+      map: lonlatoption.map,
       title: lonlatoption.title, // title 속성 추가
     });
   }
 
-  // 특정 장소를 검색하는 함수입니다.
+  //! 특정 장소를 검색하는 함수입니다.
   function searchPOI(btnValue: string) {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function (position) {
@@ -123,71 +135,75 @@ const Map: React.FC = () => {
     }
   }
 
-  //? POI검색
+  //! POI검색
   function onPOIComplete(this: any) {
     console.log(this._responseData); //json로 데이터를 받은 정보들을 콘솔창에서 확인할 수 있습니다.
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition( (position) => {
+      navigator.geolocation.getCurrentPosition((position) => {
         let lat = position.coords.latitude;
         let lon = position.coords.longitude;
-        let getRPObj: { name: any; lon: any; lat: any; }[] = [];
         let count = 0;
 
         if (this._responseData.searchPoiInfo.pois.poi != '') {
-          this._responseData.searchPoiInfo.pois.poi.slice(0, 5).forEach( (item: {
-            name: any;
-            id: any;
-            frontLon: any;
-            frontLat: any;
-          }) => {
-            //결과를 반복문으로 돌려 마커를 등록합니다.
-            //response 데이터중 원하는 값을 찾습니다.
-            var name = item.name;
-            var id = item.id;
-            var lon = item.frontLon;
-            var lat = item.frontLat;
-            var lonlatoption = {
-              title: name, //마커 라벨 text 설정
-              lonlat: new window.Tmapv2.LatLng(lat, lon), //마커 라벨 좌표 설정
-              position: map,
-              map: map,
-            };
-            count += 1;
-            let nameAndPosition = {
-              number: count,
-              name: item.name,
-              lon : item.frontLon,
-              lat : item.frontLat,
-            }
-            console.log(nameAndPosition);
-            addMarker(lonlatoption); //마커를 추가하는 함수입니다.
-          });
+          this._responseData.searchPoiInfo.pois.poi
+            .slice(0, 5)
+            .forEach(
+              (item: { name: any; id: any; frontLon: any; frontLat: any }) => {
+                //결과를 반복문으로 돌려 마커를 등록합니다.
+                //response 데이터중 원하는 값을 찾습니다.
+                var name = item.name;
+                var id = item.id;
+                var lon = item.frontLon;
+                var lat = item.frontLat;
+                var lonlatoption = {
+                  title: name, //마커 라벨 text 설정
+                  lonlat: new window.Tmapv2.LatLng(lat, lon), //마커 라벨 좌표 설정
+                  position: map,
+                  map: map,
+                };
+                count += 1;
+                let nameAndPosition = {
+                  number: count,
+                  name: item.name,
+                  lon: item.frontLon,
+                  lat: item.frontLat,
+                };
+                console.log(nameAndPosition);
+                addMarker(lonlatoption); //마커를 추가하는 함수입니다.
+              },
+            );
           //* 동적으로 개수 만큼 div생성
-          const dynamicDivContent = this._responseData.searchPoiInfo.pois.poi.slice(0, 5).map(
-            (item: { name: any; id: any; frontLon: any; frontLat: any }) => (
-              <div key={item.id} onClick={() => getRP(item.frontLat, item.frontLon)}>
-                <span>{item.name}</span>
-              </div>
-            )
-          );
-          setDynamicDiv(<div>{dynamicDivContent}</div>);
-        } 
-        else {
+          const dynamicDivContent = this._responseData.searchPoiInfo.pois.poi
+            .slice(0, 5)
+            .map(
+              (item: { name: any; id: any; frontLon: any; frontLat: any }) => (
+                <div style={{display : 'flex', justifyContent : 'center',borderTop: "1px solid #424242", width : '100%', height : '20%'}}
+                  key={item.id}
+                  onClick={() => getRP(item.frontLat, item.frontLon)}
+                >
+                  {item.name}
+                </div>
+              ),
+            );
+          setDynamicDiv(<div style={{width : '100%', height : '40%',display : 'flex', flexDirection : 'column', justifyContent : 'space-around', alignItems : 'center',position: 'absolute', bottom: 0, overflow: "scroll", backgroundColor : 'white',
+          left: 0, right : 0}}>{dynamicDivContent}</div>);
+        } else {
           alert('검색결과가 없습니다.');
         }
         map.setCenter(new window.Tmapv2.LatLng(lat, lon));
-        map.setZoom(17);
-      })
+        map.setZoom(15);
+      });
     }
   }
 
+  //! 경로 설정 함수
   function getRP(selectLat: any, selectLon: any) {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function (position) {
         let lat = position.coords.latitude;
         let lon = position.coords.longitude;
         let s_latlng = new window.Tmapv2.LatLng(lat, lon);
-        //? 도착지 설정되면 좌표값으로 들어갈 곳
+        //? 도착지 설정되면 좌표값으로 입력됨
         let e_latlng = new window.Tmapv2.LatLng(selectLat, selectLon);
         let marker_s;
 
@@ -222,8 +238,16 @@ const Map: React.FC = () => {
   }
 
   useEffect(() => {
-    window.addEventListener('load', initTmap);
-  }, []);
+    if (selectedBtn) {
+      searchPOI(selectedBtn);
+    }
+  }, [selectedBtn]);
+
+  useEffect(() => {
+    // DefaultBtnContext의 값이 업데이트될 때 initTmap 함수 실행
+    initTmap();
+
+  }, [btnContextData]);
 
   function onComplete(this: {
     _responseData: any;
@@ -254,7 +278,6 @@ const Map: React.FC = () => {
         map.setCenter(new window.Tmapv2.LatLng(lat, lon));
       }, onError); // onError 함수 추가
     }
-
     map.setZoom(18);
   }
 
@@ -263,13 +286,15 @@ const Map: React.FC = () => {
   }
 
   return (
-    <div>
-      <div id="map_div"></div>
-      {dynamicDiv}
+    <>
+      <div id="map_div">
+      </div>
+      {/* 단축 버튼 클릭하면 생기는 div */}
+      <>
+        {dynamicDiv}
+      </>
       {/* //? 경로안내로 버튼 */}
-      {/* <button onClick={getRP}>경로실행</button> */}
-      <button onClick={() => searchPOI("편의점")}>검색</button>
-    </div>
+    </>
   );
 };
 
