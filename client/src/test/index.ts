@@ -10,7 +10,7 @@ app.use(express.static(rootPublic));
 
 // 서비스 워커 파일을 별도의 경로로 제공
 app.get('/service-worker.js', (req: Request, res: Response) => {
-  res.sendFile(path.join(rootPublic, 'service-worker.js'));
+  res.sendFile(path.join(root,'src', 'service-worker.js'));
 });
 
 // 나머지 요청은 index.html 파일로 응답
