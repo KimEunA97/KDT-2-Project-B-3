@@ -58,8 +58,8 @@ const clientConfig = {
       start_url: '/',
       icons: [
         {
-          src: path.resolve(__dirname, 'src', 'Chnusik.png'),
-          sizes: [210],
+          src: path.resolve(__dirname,'chnusik.png'),
+          sizes: '210x210',
           destination: path.join('icons'),
         },
       ],
