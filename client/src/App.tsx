@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import Header from './components/layout/header';
-import Custompage from './components/pages/custompage';
-import LoginPage from './components/pages/loginPage';
 import Mainpage from './components/pages/mainPage';
 import ProtoTestPage from './components/pages/testPageHer';
 
@@ -32,8 +30,6 @@ const App = (): JSX.Element => {
       <Routes>
         <Route path="/" element={<ProtoTestPage />} />
         <Route path="/main" element={<Mainpage />} />
-        <Route path="/custom" element={<Custompage />} />
-        <Route path="/login" element={<LoginPage />} />
         {/* <Route path="/signUp" element={<SignUpPage />} /> */}
       </Routes>
     </div>
