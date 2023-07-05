@@ -50,17 +50,17 @@ const clientConfig = {
     }),
     new WebpackPwaManifest({
       filename: 'manifest.json',
-      name: 'My App',
-      short_name: 'App',
-      description: 'My Progressive Web App',
+      name: 'smooD',
+      short_name: 'smooD',
+      description: 'smooth drive',
       background_color: '#ffffff',
       theme_color: '#000000',
       start_url: '/',
       icons: [
         {
-          src: path.resolve(__dirname, 'src', 'icon.png'),
-          sizes: [96, 128, 192, 256, 384, 512],
-          destination: path.join('assets', 'icons'),
+          src: path.resolve(__dirname, 'src', 'Chnusik.png'),
+          sizes: [210],
+          destination: path.join('icons'),
         },
       ],
     }),
